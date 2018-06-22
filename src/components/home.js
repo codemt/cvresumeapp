@@ -10,7 +10,7 @@ import Footer from './footer';
  class Home extends Component {
   render() {
     return (
-        <div>
+        <div style={{paddingTop:0,paddingBottom:0}}>
         <Jumbotron style={{backgroundColor:'#fff'}}>
         <section class="portfolio-block block-intro">
             <div class="container">
@@ -20,9 +20,9 @@ import Footer from './footer';
             </div>
 </section>
         </Jumbotron>
+        <a class="scroll" href="#"><span></span> </a>
         <div>
                 <SnapShot />
-                <Projects />
                 <Footer />
         </div>
       </div>

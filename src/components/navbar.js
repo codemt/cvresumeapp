@@ -2,31 +2,56 @@ import React, { Component } from 'react';
 import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../../node_modules/bootstrap/dist/js/bootstrap.min.js';
 import '../stylesheets/navbar.css';
-import { NavLink } from 'react-router-dom';
+import {
+    Collapse,
+    Navbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink,
+    UncontrolledDropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem } from 'reactstrap';
+  
 class NavBar extends Component {
+    constructor(props) {
+        super(props);
+    
+        this.toggle = this.toggle.bind(this);
+        this.state = {
+          isOpen: false
+        };
+      }
+      toggle() {
+        this.setState({
+          isOpen: !this.state.isOpen
+        });
+      }
   render() {
     return (
-      <div>
-        <nav className="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
-            <div className="container"><a href="#" className="navbar-brand logo">Mithilesh</a><button data-toggle="collapse" data-target="#navbarNav" className="navbar-toggler"><span className="sr-only">Toggle navigation</span><span className="navbar-toggler-icon"></span></button>
-                <div className="collapse navbar-collapse"
-                    id="navbarNav">
-                    <ul className="nav navbar-nav ml-auto">
-                        <NavLink to="/home">
-                            <li role="presentation" className="nav-item"><a href="index.html" className="nav-link active">Home</a></li>
-                        </NavLink>
-                         <NavLink to="/projects">   
-                        <li role="presentation" className="nav-item"><a href="projects-compact-grid.html" className="nav-link">Projects</a></li>
-                        </NavLink>
-                        <li role="presentation" className="nav-item"><a href="project-page.html" className="nav-link">Project Page</a></li>
-                        <li role="presentation" className="nav-item"><a href="cv.html" className="nav-link">CV</a></li>
-                        <li role="presentation" className="nav-item"><a href="contact.html" className="nav-link">Contact</a></li>
-                        <li role="presentation" className="nav-item"><a href="hire-me.html" className="nav-link">Hire me</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        
+        <div>
+        <Navbar  className="navbar-dark  bg-white gradient" light expand="md" style={{color:'#6610f2'}}>
+          <NavbarBrand href="/home">Mithilesh</NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink href="/home">Home</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/Projects">Projects</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/gallery">Gallery</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/cv">CV</NavLink>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Navbar>
       </div>
     )
   }
